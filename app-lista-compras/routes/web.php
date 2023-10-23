@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\{ReplySupportController, SupportController};
+use App\Http\Controllers\List\{ListController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/supports/create', [SupportController::class, 'create'])->name('supports.create');
     Route::post('/supports', [SupportController::class, 'store'])->name('supports.store');
     Route::get('/supports', [SupportController::class, 'index'])->name('supports.index');
+
+    // Route::resource('/listas', SupportController::class);
+//    Route::delete('/lists/{id}', [ListsController::class, 'destroy'])->name('supports.destroy');
+//    Route::put('/lists/{id}', [ListsController::class, 'update'])->name('supports.update');
+//    Route::get('/lists/{id}/edit', [ListsController::class, 'edit'])->name('supports.edit');
+//    Route::get('/lists/create', [ListsController::class, 'create'])->name('supports.create');
+//    Route::post('/lists', [ListsController::class, 'store'])->name('supports.store');
+    Route::get('/lists', [ListController::class, 'index'])->name('supports.index');
+
+
+
 });
 
 require __DIR__ . '/auth.php';
